@@ -1,96 +1,64 @@
+
+vim.g.mapleader = " "
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
 -- Phoenix/Elixir: .heex template files
 vim.filetype.add({ extension = { heex = "heex" } })
-
--- [[ Setting options ]]
--- See `:help vim.opt`
-
--- Make line numbers default
-vim.opt.number = true
--- Relative line numbers, to help with jumping.
-vim.opt.relativenumber = true
-
--- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a'
-
--- Don't show the mode, since it's already in the status line
-vim.opt.showmode = false
-
--- Sync clipboard between OS and Neovim.
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
-
--- Enable break indent
-vim.opt.breakindent = true
-
--- Save undo history
-vim.opt.undofile = true
-
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-
--- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
-
--- Decrease update time
-vim.opt.updatetime = 250
-
--- Decrease mapped sequence wait time
-vim.opt.timeoutlen = 300
-
--- Configure how new splits should be opened
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-
---Use Spaces instad of taps
-vim.opt.expandtab = true
--- size for spaces using << and >>
-vim.opt.shiftwidth = 2
--- size for spaces for tab
-vim.opt.tabstop = 2
--- how many spaces when prassing tab
-vim.opt.softtabstop = 2
-
--- indetation opthions
-vim.opt.smarttab = true
-vim.opt.smartindent = true
-vim.opt.autoindent = true
-
--- Sets how neovim will display certain whitespace characters in the editor.
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-
--- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
-
--- Show which line your cursor is on
-vim.opt.cursorline = true
-
--- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
-
--- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
--- instead raise a dialog asking if you wish to save the current file(s)
--- See `:help 'confirm'`
-vim.opt.confirm = true
-
- vim.opt.swapfile = false
-
-
--- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
-
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+vim.filetype.add({
+  extension = {
+    gowork = "gowork",
+    gotmpl = "gotmpl",
+    eelixir = "eelixir",
+    surface = "surface",
+  },
 })
+
+-- Alias vim.opt to 'opt' for cleaner code below
+local opt = vim.opt
+
+-- ==============================================================================
+-- Editor Behavior
+-- ==============================================================================
+opt.autowrite = true               -- Automatically save before executing commands
+opt.clipboard = "unnamedplus"      -- Sync Neovim clipboard with system clipboard
+opt.completeopt = "menu,menuone,noselect" -- Better autocompletion menu UI
+opt.conceallevel = 2               -- Hide markdown formatting markers (like *bold*)
+opt.confirm = true                 -- Prompt to save instead of throwing an error when exiting
+opt.formatoptions = "jcroqlnt"     -- Better default comment formatting
+opt.ignorecase = true              -- Ignore casing in searches...
+opt.smartcase = true               -- ...unless you use a capital letter
+opt.inccommand = "nosplit"         -- Live preview of search/replace (e.g., %s/old/new)
+opt.mouse = "a"                    -- Enable full mouse support
+opt.timeoutlen = 300               -- Wait time (ms) for mapped key sequences (makes WhichKey faster)
+opt.undofile = true                -- Save undo history to a file (undo after reopening!)
+opt.updatetime = 200               -- Faster hover events and swap file saving
+opt.virtualedit = "block"          -- Allow cursor to move past end of line in visual block mode
+opt.swapfile = false
+
+-- ==============================================================================
+-- UI & Visuals
+-- ==============================================================================
+opt.cursorline = true              -- Highlight the line your cursor is currently on
+opt.laststatus = 3                 -- Use a single, global statusline at the bottom
+opt.linebreak = true               -- Wrap long lines at words, not in the middle of a word
+opt.list = true                    -- Show invisible characters
+opt.number = true                  -- Show absolute line numbers
+opt.relativenumber = true          -- Show relative line numbers for easier jumping
+opt.scrolloff = 4                  -- Keep 4 lines visible above/below cursor when scrolling
+opt.sidescrolloff = 8              -- Keep 8 columns visible left/right when scrolling
+opt.showmode = false               -- Hide "-- INSERT --" text (statusline usually handles this)
+opt.signcolumn = "yes"             -- Always show the left gutter (prevents text shifting)
+opt.splitbelow = true              -- Open horizontal splits below the current window
+opt.splitright = true              -- Open vertical splits to the right of the current window
+opt.termguicolors = true           -- Enable 24-bit true colors
+opt.wrap = false                   -- Disable line wrapping by default
+
+-- ==============================================================================
+-- Indentation & Tabs
+-- ==============================================================================
+opt.expandtab = true               -- Convert tabs to spaces
+opt.shiftround = true              -- Round indentation to the nearest multiple of shiftwidth
+opt.shiftwidth = 2                 -- Number of spaces to use for each step of (auto)indent
+opt.tabstop = 2                    -- Number of spaces a <Tab> counts for
+opt.smartindent = true             -- Automatically insert the correct indentation on new lines
