@@ -16,6 +16,7 @@ return {
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
   opts = {
+    auto_install = true,
     ensure_installed = { "go", "lua", "vim", "vimdoc", "markdown" },
     highlight = { enable = true },
     indent = { enable = true },

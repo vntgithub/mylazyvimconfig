@@ -37,11 +37,11 @@ return {
 
       -- LSP keymaps
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
-      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "References" })
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
-      vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format" })
-      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+      vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "References" })
+      vim.keymap.set("n", "ca", vim.lsp.buf.code_action, { desc = "Code action" })
+      vim.keymap.set("n", "gf", vim.lsp.buf.format, { desc = "Format" })
+      vim.keymap.set("n", "rn", vim.lsp.buf.rename, { desc = "Rename" })
     end,
   },
 }

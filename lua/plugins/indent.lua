@@ -4,14 +4,15 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   opts = {
     indent = {
-      char = "│", -- This is the vertical line you want
-      tab_char = "│",
+      char = "┆",
+      tab_char = "┆",
     },
     scope = {
-      enabled = true, -- This highlights the specific 'if' block you are inside
+      enabled = false, -- This highlights the specific 'if' block you are inside
       show_start = false,
       show_end = false,
       char = "▎",
+      highlight = { "Function", "Label" },
     },
     exclude = {
       filetypes = {
@@ -26,3 +27,4 @@ return {
     },
   },
 }
+
