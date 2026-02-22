@@ -20,6 +20,12 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
     },
+    opts = {
+      servers = {
+        -- copilot.lua only works with its own copilot lsp server
+        copilot = { enabled = false },
+      },
+    },
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 

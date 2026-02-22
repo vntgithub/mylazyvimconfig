@@ -62,3 +62,38 @@ opt.shiftround = true              -- Round indentation to the nearest multiple 
 opt.shiftwidth = 2                 -- Number of spaces to use for each step of (auto)indent
 opt.tabstop = 2                    -- Number of spaces a <Tab> counts for
 opt.smartindent = true             -- Automatically insert the correct indentation on new lines
+
+
+-- -- Lua
+-- vim.opt.termguicolors = true
+--
+-- -- If you want Neovim to respect your 0.7 opacity from Kitty:
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+--
+-- local function highlight_transparent()
+--     -- Base Neovim Transparency
+--     local highlights = {
+--         "Normal", "NormalFloat", "NormalNC", "SignColumn", 
+--         "WinSeparator", "StatusLine", "StatusLineNC",
+--         "TelescopeNormal", "TelescopeBorder", "TelescopePromptBorder",
+--         "OilNormal", "OilBorder"
+--     }
+--
+--     for _, group in ipairs(highlights) do
+--         vim.api.nvim_set_hl(0, group, { bg = "none", ctermbg = "none" })
+--     end
+-- end
+--
+-- -- Run it immediately
+-- highlight_transparent()
+--
+-- -- Ensure it stays transparent even if you change colorschemes
+-- vim.api.nvim_create_autocmd("ColorScheme", {
+--     callback = highlight_transparent,
+-- })
+--
+-- -- Match Telescope selection to your Matugen selection_background (#bfc6dc)
+-- vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = "#293041", fg = "#bfc6dc" })
+--
+--

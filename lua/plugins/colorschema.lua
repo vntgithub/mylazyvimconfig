@@ -13,6 +13,6 @@ return {
   lazy = false,    -- Load this immediately
   priority = 1000, -- Load this before everything else
   config = function()
-    vim.cmd([[colorscheme tokyonight-night]])
+    vim.cmd.colorscheme "tokyonight-night"
   end,
 }
